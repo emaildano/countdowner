@@ -3,9 +3,8 @@
 Count down app for Geckoboard widgets, that returns the countdown for
 **business days**.
 
-See [this][1] for more details.
+See [Geckoboard documentation](http://www.geckoboard.com/developers/custom-widgets/widget-types/rag-numbers-only) for more details.
 
-[1]http://www.geckoboard.com/developers/custom-widgets/widget-types/rag-numbers-only
 
 ## How it works
 
