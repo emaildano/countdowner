@@ -12,6 +12,6 @@ class Countdowner < Sinatra::Base
     today = Date.today
     end_date = Date.parse(params[:date])
     item = { "value" => "#{today.business_days_until(end_date)}}", "text" => "#{msg}" }
-    {"root" => {"item" => [{}, item, {}] } }.to_json
+    {"item" => [{}, item, {}] }.to_json
   end
 end
