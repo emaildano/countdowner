@@ -21,7 +21,7 @@ class Countdowner < Sinatra::Base
     repo = params[:repo]
     github = 'https://api.github.com/repos/ministryofjustice'
     pull_requests = open("#{github}/#{repo}/pulls").read
-    red_result JSON.parse(pull_requests).count
+    pr_result JSON.parse(pull_requests).count
   end
 
   private
@@ -30,8 +30,16 @@ class Countdowner < Sinatra::Base
     {"item" => [{}, item, {}] }.to_json
   end
 
-  def red_result count
+  def pr_result count
     item = { "value" => "#{count}", "text" => "open pull requests" }
-    {"item" => [item, {}, {}] }.to_json
+    format = case count
+             when 0
+               [{}, {}, item]
+             when 1..2
+               [{}, item, {}]
+             else
+               [item, {}, {}]
+             end
+    { "item" => format }.to_json
   end
 end
