@@ -2,6 +2,7 @@ require 'sinatra/base'
 require 'business_time'
 require 'open-uri'
 require 'json'
+require 'holiday_calendar'
 
 class Countdowner < Sinatra::Base
 
@@ -13,7 +14,8 @@ class Countdowner < Sinatra::Base
     msg = params[:msg]
     today = Date.today
     end_date = Date.parse(params[:date])
-    item = { "value" => "#{today.business_days_until(end_date)}", "text" => "business days #{msg}" }
+    en = HolidayCalendar.load(:uk)
+    item = { "value" => "#{en.count_working_days_between(today, end_date)}", "text" => "business days #{msg}" }
     result item
   end
 

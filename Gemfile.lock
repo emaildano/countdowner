@@ -1,3 +1,9 @@
+GIT
+  remote: https://github.com/stephenrichards/holiday_calendar.git
+  revision: 0d8c8bdaeab27cc707f89907f837b7fb4183886a
+  specs:
+    holiday_calendar (1.0.16)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -32,5 +38,6 @@ PLATFORMS
 
 DEPENDENCIES
   business_time
+  holiday_calendar!
   shotgun
   sinatra
