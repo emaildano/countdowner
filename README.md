@@ -11,11 +11,16 @@ See [Geckoboard documentation](http://www.geckoboard.com/developers/custom-widge
 
 ### Days countdown
 
-    curl -X POST http://countdownerapp.herokuapp.com/?date=2014-05-21&msg=days+Until+Prod+Deploy
+It returns the number of working days until the given date. It does
+take into account **all UK holidays** and weekends.
 
-or
+The endpoint is:
 
-    curl --data "date=2014-05-21&msg=Until+Prod+Deploy" http://countdownerapp.herokuapp.com/
+    /until/:date/:message
+
+Example:
+
+    curl http://countdownerapp.herokuapp.com/until/2014-05-21/days+Until+Prod+Deploy
 
 returns
 
@@ -23,7 +28,15 @@ returns
 
 ### Pull request count
 
-    curl --data 'repo=tribunals' http://localhost:9393/pull-requests
+The endpoint is:
+
+    /pulls/:repo
+
+(Where **:repo** is a repository name under **/ministryofjustice/**.)
+
+Example:
+
+    curl http://localhost:9393/pulls/tribunals
 
 returns
 

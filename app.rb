@@ -6,11 +6,7 @@ require 'holiday_calendar'
 
 class Countdowner < Sinatra::Base
 
-  get '/' do
-    'Hello world!'
-  end
-
-  post '/' do
+  get '/until/:date/:msg' do
     msg = params[:msg]
     today = Date.today
     end_date = Date.parse(params[:date])
@@ -19,7 +15,7 @@ class Countdowner < Sinatra::Base
     result item
   end
 
-  post '/pull-requests' do
+  get '/pulls/:repo' do
     repo = params[:repo]
     github = 'https://api.github.com/repos/ministryofjustice'
     pull_requests = open("#{github}/#{repo}/pulls").read
