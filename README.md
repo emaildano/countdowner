@@ -20,11 +20,11 @@ The endpoint is:
 
 Example:
 
-    curl http://countdownerapp.herokuapp.com/until/2014-05-21/days+Until+Prod+Deploy
+    curl http://countdownerapp.herokuapp.com/until/2014-05-21/Until%20Prod%20Deploy
 
 returns
 
-    {"item":[{},{"value":"5","text":"business days days Until Prod Deploy"},{}]}
+    {"item":[{},{"value":"5","text":"business days Until Prod Deploy"},{}]}
 
 ### Pull request count
 
