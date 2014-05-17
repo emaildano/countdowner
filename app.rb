@@ -3,6 +3,7 @@ require 'business_time'
 require 'open-uri'
 require 'json'
 require 'holiday_calendar'
+require 'pivotal-tracker'
 
 class Countdowner < Sinatra::Base
 
@@ -36,6 +37,13 @@ class Countdowner < Sinatra::Base
     pr_result JSON.parse(pull_requests).count
   end
 
+  get '/pivotal/accepted-stories/:project_id' do
+    project_id = params[:project_id]
+    PivotalTracker::Client.token = ENV['PIVOTAL']
+    pro = PivotalTracker::Project.find(project_id)
+    accepted_stories PivotalTracker::Iteration.current(pro)
+  end
+
   private
 
   def business_days_until date
@@ -43,6 +51,17 @@ class Countdowner < Sinatra::Base
     end_date = Date.parse(date)
     en = HolidayCalendar.load(:uk)
     days = en.count_working_days_between(today, end_date)
+  end
+
+  def accepted_stories sprint
+    stories = sprint.stories.map(&:current_state)
+    max = stories.count
+    accepted = stories.count("accepted")
+
+    { "item" => "#{accepted}",
+      "max"  => { "text" => "Total stories", "value" => "#{max}" },
+      "min"  => { "text" => "Accepted stories", "value" => "0" }
+    }.to_json
   end
 
   def result item

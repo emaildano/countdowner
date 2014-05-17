@@ -13,15 +13,42 @@ GEM
       minitest (~> 5.1)
       thread_safe (~> 0.1)
       tzinfo (~> 1.1)
+    builder (3.2.2)
     business_time (0.7.2)
       activesupport (>= 3.1.0)
       tzinfo
+    crack (0.4.2)
+      safe_yaml (~> 1.0.0)
+    happymapper (0.4.1)
+      libxml-ruby (~> 2.0)
     i18n (0.6.9)
     json (1.8.1)
+    libxml-ruby (2.7.0)
+    mime-types (1.25.1)
+    mini_portile (0.6.0)
     minitest (5.3.4)
+    nokogiri (1.6.2.1)
+      mini_portile (= 0.6.0)
+    nokogiri-happymapper (0.5.9)
+      nokogiri (~> 1.5)
+    pivotal-tracker (0.5.12)
+      builder
+      builder
+      crack
+      happymapper (>= 0.3.2)
+      nokogiri (>= 1.4.3)
+      nokogiri (>= 1.5.5)
+      nokogiri-happymapper (>= 0.5.4)
+      rest-client (~> 1.6.0)
+      rest-client (~> 1.6.0)
     rack (1.5.2)
     rack-protection (1.5.3)
       rack
+    rdoc (4.1.0)
+    rest-client (1.6.8.rc1)
+      mime-types (~> 1.16)
+      rdoc (>= 2.4.2)
+    safe_yaml (1.0.3)
     shotgun (0.9)
       rack (>= 1.0)
     sinatra (1.4.5)
@@ -39,5 +66,6 @@ PLATFORMS
 DEPENDENCIES
   business_time
   holiday_calendar!
+  pivotal-tracker
   shotgun
   sinatra
