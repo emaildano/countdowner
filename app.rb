@@ -59,8 +59,8 @@ class Countdowner < Sinatra::Base
     accepted = stories.count("accepted")
 
     { "item" => "#{accepted}",
-      "max"  => { "text" => "Total stories", "value" => "#{max}" },
-      "min"  => { "text" => "Accepted stories", "value" => "0" }
+      "max"  => { "text" => "Max stories", "value" => "#{max}" },
+      "min"  => { "text" => "Min stories", "value" => "0" }
     }.to_json
   end
 
