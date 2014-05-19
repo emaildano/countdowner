@@ -22,7 +22,7 @@ class Countdowner < Sinatra::Base
     item = {
       text: %Q|<div class="widget widget-countdown assessment" data-end="16-Jun-2014 13:00:00" data-title="Alpha Assessment" data-id="assessment">
       <h1 class="title" data-bind="title">#{params[:title]}</h1>
-      <h2 class="countdown-time" data-bind="timeleft">#{days}</h2>
+      <h2 class="countdown-time" data-bind="timeleft">#{days} day#{days > 1 ? 's' : ''}</h2>
     </div>|,
       type: 0
     }
