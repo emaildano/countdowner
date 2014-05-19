@@ -20,7 +20,7 @@ class Countdowner < Sinatra::Base
     days = business_days_until(params[:date])
 
     item = {
-      text: %Q|<div class="widget widget-countdown assessment" data-end="16-Jun-2014 13:00:00" data-title="Alpha Assessment" data-id="#{params[:style]}">
+      text: %Q|<div class="widget widget-countdown #{params[:style]}">
       <h1 class="title" data-bind="title">#{params[:title]}</h1>
       <h2 class="countdown-time" data-bind="timeleft">#{days} day#{days > 1 ? 's' : ''}</h2>
     </div>|,
