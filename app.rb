@@ -19,6 +19,7 @@ class Countdowner < Sinatra::Base
 
   get '/days_until/:date/:title/:style' do
     days = business_days_until(params[:date])
+    puts "days: #{days}"
 
     item = {
       text: %Q|<div class="widget widget-countdown #{params[:style]}">
@@ -47,10 +48,14 @@ class Countdowner < Sinatra::Base
   private
 
   def business_days_until date
-    today = Date.today
-    end_date = Date.parse(date)
-    en = HolidayCalendar.load(:uk)
-    days = en.count_working_days_between(today, end_date)
+    begin
+      today = Date.today
+      end_date = Date.parse(date)
+      en = HolidayCalendar.load(:uk)
+      days = en.count_working_days_between(today, end_date)
+    rescue ArgumentError
+      0
+    end
   end
 
   def accepted_stories sprint
